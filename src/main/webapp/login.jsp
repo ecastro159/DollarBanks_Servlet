@@ -86,8 +86,7 @@ input[type="number"] {
 							</div>
 
 							<div class="d-grid gap-2 d-md-flex justify-content-md-center">
-								<button class="btn btn-success" type="submit">Submit
-									form</button>
+								<button class="btn btn-success" type="submit">Login</button>
 							</div>
 						</form>
 					</div>

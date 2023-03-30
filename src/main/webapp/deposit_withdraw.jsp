@@ -56,6 +56,11 @@
 					</div>
 					<div class="nav" id="navbarNav">
 						<ul class="nav justify-content-end">
+							<li class="nav-item font-monospace text-success">userID: ${userID}</li>
+						</ul>
+					</div>
+					<div class="nav" id="navbarNav">
+						<ul class="nav justify-content-end">
 							<li class="nav-item"><a class="nav-link" href="logout">logout</a>
 							</li>
 						</ul>

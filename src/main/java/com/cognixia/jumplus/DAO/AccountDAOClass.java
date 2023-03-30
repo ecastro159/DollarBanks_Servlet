@@ -13,7 +13,7 @@ public class AccountDAOClass implements AccountDAO {
 
 	@Override
 	public double currentBalanceInChecking(int account_id) {
-		String sql = "SELECT checking_account FROM Account WHERE customer_id = ?";
+		String sql = "SELECT round(checking_account,2) as checking_account FROM Account WHERE customer_id = ?";
 		try {
 			double amount = 0;
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class AccountDAOClass implements AccountDAO {
 	@Override
 	public double currentBalanceInSavings(int account_id) {
 
-		String sql = "SELECT savings_account FROM Account WHERE customer_id = ?";
+		String sql = "SELECT round(savings_account,2) as savings_account FROM Account WHERE customer_id = ?";
 		try {
 			double amount = 0;
 			PreparedStatement pstmt = conn.prepareStatement(sql);
