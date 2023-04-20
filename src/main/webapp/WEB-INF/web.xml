@@ -134,7 +134,7 @@
     <servlet-name>SavingsTransactions</servlet-name>
     <url-pattern>/SavingsTransactions</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>TransactionHistory</display-name>
     <servlet-name>TransactionHistory</servlet-name>
@@ -143,5 +143,25 @@
   <servlet-mapping>
     <servlet-name>TransactionHistory</servlet-name>
     <url-pattern>/TransactionHistory</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TransferMoney</display-name>
+    <servlet-name>TransferMoney</servlet-name>
+    <jsp-file>/TransferMoney.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransferMoney</servlet-name>
+    <url-pattern>/TransferMoney</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TransferToOther</display-name>
+    <servlet-name>TransferToOther</servlet-name>
+    <servlet-class>com.cognixia.jumplus.web.TransferToOther</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransferToOther</servlet-name>
+    <url-pattern>/TransferToOther</url-pattern>
   </servlet-mapping>
 </web-app>

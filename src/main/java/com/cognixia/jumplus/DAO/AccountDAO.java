@@ -15,6 +15,7 @@ public interface AccountDAO {
 	public void withdrawFromSavings(int account_id, double amount);
 
 	public void withdrawFromChecking(int account_id, double amount);
-
+	
 	public void transfer(int account_id, double amount);
+
 }

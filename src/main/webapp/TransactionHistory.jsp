@@ -78,7 +78,7 @@ if (session.getAttribute("userID") == null) {
 						<a href="deposit_withdraw_form" class="btn btn-success"
 							role="button">Deposit/Withdraw</a> <a href="Balance"
 							class="btn btn-success" role="button">Check Balance</a> <a
-							href="Balance" class="btn btn-success" role="button">Transfer
+							href="TransferMoney" class="btn btn-success" role="button">Transfer
 							to a Different Account</a>
 
 
