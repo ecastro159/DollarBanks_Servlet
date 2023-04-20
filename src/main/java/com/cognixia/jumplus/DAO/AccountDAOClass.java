@@ -12,12 +12,12 @@ public class AccountDAOClass implements AccountDAO {
 	private Connection conn = ConnectionManager.getConnection();
 
 	@Override
-	public double currentBalanceInChecking(int account_id) {
+	public double currentBalanceInChecking(int customerID) {
 		String sql = "SELECT round(checking_account,2) as checking_account FROM Account WHERE customer_id = ?";
 		try {
 			double amount = 0;
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, account_id);
+			pstmt.setInt(1, customerID);
 
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -34,13 +34,13 @@ public class AccountDAOClass implements AccountDAO {
 	}
 
 	@Override
-	public double currentBalanceInSavings(int account_id) {
+	public double currentBalanceInSavings(int customerID) {
 
 		String sql = "SELECT round(savings_account,2) as savings_account FROM Account WHERE customer_id = ?";
 		try {
 			double amount = 0;
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, account_id);
+			pstmt.setInt(1, customerID);
 
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -55,15 +55,15 @@ public class AccountDAOClass implements AccountDAO {
 	}
 
 	@Override
-	public void depositNewAccount(int account_id, double amount) {
+	public void depositNewAccount(int customerID, double amount) {
 		// TODO Auto-generated method stub
 
-		String sql = "INSERT INTO Account(account_id,customer_id,savings_account,checking_account) values(?,?,?,?)";
+		String sql = "INSERT INTO Account(customerID,customer_id,savings_account,checking_account) values(?,?,?,?)";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setNull(1, 0);
-			pstmt.setInt(2, account_id);
+			pstmt.setInt(2, customerID);
 			pstmt.setDouble(3, 0);
 			pstmt.setDouble(4, amount);
 
@@ -81,16 +81,16 @@ public class AccountDAOClass implements AccountDAO {
 	}
 
 	@Override
-	public void depositToSavings(int account_id, double amount) {
+	public void depositToSavings(int customerID, double amount) {
 
 		String sql = "UPDATE Account SET savings_account = ? WHERE customer_id = ?";
 		// String sql = "INSERT INTO
-		// Account(account_id,customer_id,savings_account,checking_account)
+		// Account(customerID,customer_id,savings_account,checking_account)
 		// values(?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setDouble(1, amount);
-			pstmt.setInt(2, account_id);
+			pstmt.setInt(2, customerID);
 
 			int rs = pstmt.executeUpdate();
 			if (rs == 1) {
@@ -108,16 +108,16 @@ public class AccountDAOClass implements AccountDAO {
 	}
 
 	@Override
-	public void depositToChecking(int account_id, double amount) {
+	public void depositToChecking(int customerID, double amount) {
 		String sql = "UPDATE Account SET checking_account = ? WHERE customer_id = ?";
 		// String sql = "INSERT INTO
-		// Account(account_id,customer_id,savings_account,checking_account)
+		// Account(customerID,customer_id,savings_account,checking_account)
 		// values(?,?,?,?)";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setDouble(1, amount);
-			pstmt.setInt(2, account_id);
+			pstmt.setInt(2, customerID);
 
 			int rs = pstmt.executeUpdate();
 			if (rs == 1) {
@@ -135,15 +135,15 @@ public class AccountDAOClass implements AccountDAO {
 	}
 
 	@Override
-	public void withdrawFromSavings(int account_id, double amount) {
+	public void withdrawFromSavings(int customerID, double amount) {
 		String sql = "UPDATE Account SET savings_account = ? WHERE customer_id = ?";
 		// String sql = "INSERT INTO
-		// Account(account_id,customer_id,savings_account,checking_account)
+		// Account(customerID,customer_id,savings_account,checking_account)
 		// values(?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setDouble(1, amount);
-			pstmt.setInt(2, account_id);
+			pstmt.setInt(2, customerID);
 
 			int rs = pstmt.executeUpdate();
 			if (rs == 1) {
@@ -161,16 +161,16 @@ public class AccountDAOClass implements AccountDAO {
 	}
 
 	@Override
-	public void withdrawFromChecking(int account_id, double amount) {
+	public void withdrawFromChecking(int customerID, double amount) {
 		String sql = "UPDATE Account SET checking_account = ? WHERE customer_id = ?";
 		// String sql = "INSERT INTO
-		// Account(account_id,customer_id,savings_account,checking_account)
+		// Account(customerID,customer_id,savings_account,checking_account)
 		// values(?,?,?,?)";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setDouble(1, amount);
-			pstmt.setInt(2, account_id);
+			pstmt.setInt(2, customerID);
 
 			int rs = pstmt.executeUpdate();
 			if (rs == 1) {
@@ -188,18 +188,18 @@ public class AccountDAOClass implements AccountDAO {
 
 
 	@Override
-	public void transfer(int account_id, double amount) {
+	public void transfer(int customerID, double amount) {
 		// TODO Auto-generated method stub
 		
 		String sql = "UPDATE Account SET checking_account = ? WHERE customer_id = ?";
 		// String sql = "INSERT INTO
-		// Account(account_id,customer_id,savings_account,checking_account)
+		// Account(customerID,customer_id,savings_account,checking_account)
 		// values(?,?,?,?)";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setDouble(1, amount);
-			pstmt.setInt(2, account_id);
+			pstmt.setInt(2, customerID);
 
 			int rs = pstmt.executeUpdate();
 			if (rs == 1) {
